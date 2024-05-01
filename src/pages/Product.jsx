@@ -64,38 +64,39 @@ const Product = () => {
   const ShowProduct = () => {
     return (
       <>
-        <div className="container my-5 py-2">
-          <div className="row">
-            <div className="col-md-6 col-sm-12 py-3">
-              <img
-                className="img-fluid"
-                src={product.image}
-                alt={product.title}
-                width="400px"
-                height="400px"
-              />
-            </div>
-            <div className="col-md-6 col-md-6 py-5">
-              <h4 className="text-uppercase text-muted">{product.category}</h4>
-              <h1 className="display-5">{product.title}</h1>
-              <p className="lead">
-                {product.rating && product.rating.rate}{" "}
-                <i className="fa fa-star"></i>
-              </p>
-              <h3 className="display-6  my-4">${product.price}</h3>
-              <p className="lead">{product.description}</p>
-              <button
-                className="btn btn-outline-dark"
-                onClick={() => addProduct(product)}
-              >
-                Add to Cart
-              </button>
-              <Link to="/cart" className="btn btn-dark mx-3">
-                Go to Cart
-              </Link>
-            </div>
-          </div>
-        </div>
+        <div className="container-sm my-3 py-1">
+  <div className="row">
+    <div className="col-md-4 col-sm-12 py-2"> 
+      <img
+        className="img-fluid"
+        src={product.image}
+        alt={product.title}
+        style={{ maxWidth: "300px", maxHeight: "300px" }}
+      />
+    </div>
+    <div className="col-md-8 col-sm-12 py-2"> {/* Adjusted column size */}
+      <h3 className="text-uppercase text-muted" style={{ fontSize: "24px" }}>{product.category}</h3> {/* Inline styles to adjust text size */}
+      <h3 className="display-6" style={{ fontSize: "24px" }}>{product.title}</h3> {/* Inline styles to adjust text size */}
+      <p className="lead" style={{ fontSize: "18px" }}>
+        {product.rating && product.rating.rate}{" "}
+        <i className="fa fa-star" style={{ fontSize: "10px" }}></i> {/* Inline styles to adjust icon size */}
+      </p>
+      <h4 className="display-7 my-2 text-danger">${product.price}</h4> {/* Adjusted margin and font size */}
+      <p className="lead" style={{ fontSize: "20px"}}>{product.description}</p> {/* Inline styles to adjust text size */}
+      <button
+        className="btn btn-outline-dark btn-sm"
+        onClick={() => addProduct(product)}
+        style={{ fontSize: "24px" }} 
+      >
+        Add to Cart
+      </button>
+      <Link to="/cart" className="btn btn-dark btn-sm mx-2" style={{ fontSize: "24px" }}> {/* Added 'btn-sm' class to make button smaller */}
+        Go to Cart
+      </Link>
+    </div>
+  </div>
+</div>
+
       </>
     );
   };
@@ -106,7 +107,7 @@ const Product = () => {
         <div className="my-4 py-4">
           <div className="d-flex">
             <div className="mx-4">
-              <Skeleton height={400} width={250} />
+              <Skeleton height={200} width={100} />
             </div>
             <div className="mx-4">
               <Skeleton height={400} width={250} />
@@ -130,32 +131,46 @@ const Product = () => {
           <div className="d-flex">
             {similarProducts.map((item) => {
               return (
-                <div key={item.id} className="card mx-4 text-center">
+                <div
+                  key={item.id}
+                  className="card mx-2 text-center"
+                  style={{ width: "200px" }}
+                >
+                  {" "}
+                  {/* Adjust the width as per your requirement */}
                   <img
-                    className="card-img-top p-3"
+                    className="card-img-top p-1"
                     src={item.image}
                     alt="Card"
-                    height={300}
-                    width={300}
+                    height={100} // Adjust the height as per your requirement
+                    width={100} // Adjust the width as per your requirement
                   />
                   <div className="card-body">
-                    <h5 className="card-title">
+                    <h5 className="card-title" style={{ fontSize: "16px" }}>
                       {item.title.substring(0, 15)}...
-                    </h5>
+                    </h5>{" "}
+                    {/* Adjust font size as per your requirement */}
                   </div>
-                  {/* <ul className="list-group list-group-flush">
-                    <li className="list-group-item lead">${product.price}</li>
-                  </ul> */}
+                  <ul className="list-group list-group-flush">
+                    <li className="list-group-item lead text-danger">
+                      ${product.price}
+                    </li>{" "}
+                    {/* Ensure 'product' here should be 'item' */}
+                  </ul>
                   <div className="card-body">
                     <Link
                       to={"/product/" + item.id}
-                      className="btn btn-dark m-1"
+                      className="btn btn-outline-dark btn-sm"
+                      // className="btn btn-dark m-1"
+                      style={{ fontSize: "14px" }} // Adjust font size as per your requirement
                     >
                       Buy Now
                     </Link>
                     <button
-                      className="btn btn-dark m-1"
+                      // className="btn btn-dark m-1"
+                      className="btn btn-outline-dark btn-sm"
                       onClick={() => addProduct(item)}
+                      style={{backgroundColor: "black", color: "white", fontSize: "14px", }} // Adjust font size as per your requirement
                     >
                       Add to Cart
                     </button>
@@ -173,14 +188,10 @@ const Product = () => {
       <Navbar />
       <div className="container">
         <div className="row">{loading ? <Loading /> : <ShowProduct />}</div>
-        <div className="row my-5 py-5">
+        <div className="row my-1 py-1">
           <div className="d-none d-md-block">
-          <h2 className="">You may also Like</h2>
-            <Marquee
-              pauseOnHover={true}
-              pauseOnClick={true}
-              speed={50}
-            >
+            <h4 className="">You may also Like</h4>
+            <Marquee pauseOnHover={true} pauseOnClick={true} speed={50}>
               {loading2 ? <Loading2 /> : <ShowSimilarProduct />}
             </Marquee>
           </div>

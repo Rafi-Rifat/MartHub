@@ -31,17 +31,17 @@ const Checkout = () => {
     });
 
     return (
-      <div className="container py-5">
+      <div className="container py-1">
         <div className="row my-4">
           <div className="col-md-5 col-lg-4 order-md-last">
             <div className="card mb-4">
-              <div className="card-header py-3 bg-light">
-                <h5 className="mb-0">Order Summary</h5>
+              <div className="card-header py-3 bg-danger">
+                <h5 className="mb-0 text-center text-white">Order Summary</h5>
               </div>
               <div className="card-body">
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
-                    Products ({totalItems})<span>${Math.round(subtotal)}</span>
+                    Products ({totalItems})<span>${(subtotal).toFixed(2)}</span>
                   </li>
                   <li className="list-group-item d-flex justify-content-between align-items-center px-0">
                     Shipping
@@ -52,7 +52,7 @@ const Checkout = () => {
                       <strong>Total amount</strong>
                     </div>
                     <span>
-                      <strong>${Math.round(subtotal + shipping)}</strong>
+                      <strong>${(subtotal + shipping).toFixed(2)}</strong>
                     </span>
                   </li>
                 </ul>
@@ -61,8 +61,8 @@ const Checkout = () => {
           </div>
           <div className="col-md-7 col-lg-8">
             <div className="card mb-4">
-              <div className="card-header py-3">
-                <h4 className="mb-0">Billing address</h4>
+              <div className="card-header bg-danger text-light py-3">
+                <h4 className="mb-0 text-center">Billing address</h4>
               </div>
               <div className="card-body">
                 <form className="needs-validation" noValidate>
@@ -273,7 +273,7 @@ const Checkout = () => {
                     type="submit"
                     disabled
                   >
-                    Continue to checkout
+                    Confirm Payment
                   </button>
                 </form>
               </div>
@@ -332,9 +332,8 @@ const Checkout = () => {
         `}
       </style>
       <Navbar />
-      <div className="container my-3 py-3">
-        {/* <h1 className="text-center">Checkout</h1> */}
-        {/* <hr /> */}
+      <div className="container">
+      
         {state.length ? <ShowCheckout /> : <EmptyCart />}
       </div>
       <Footer />

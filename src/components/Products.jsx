@@ -128,13 +128,16 @@ const Products = () => {
                   <div className="card-btn-group">
                     <Link
                       to={"/product/" + product.id}
-                      className="btn btn-primary btn-block btn-sm"
+                      // className="btn btn-block btn-sm"
+                      className="btn btn-outline-dark btn-sm"
+                      // style={{ backgroundColor: "#99004C", color: "white" }}
                     >
                       Buy Now
                     </Link>
                     <button
-                      className="btn btn-warning btn-block btn-sm"
+                      className="btn btn-block btn-sm"
                       onClick={() => addProduct(product)}
+                      style={{ backgroundColor: "black", color: "white" }}
                     >
                       Add to Cart
                     </button>
