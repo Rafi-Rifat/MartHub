@@ -1,0 +1,46 @@
+.image-container {
+  height: 150px;
+  overflow: hidden;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 100%; /* Ensure the image fills the entire container */
+  object-fit: contain; /* Maintain aspect ratio and cover entire container */
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+}
+
+.card-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 1rem;
+  color: #6c757d; /* Dimmed color for price */
+  margin-bottom: 1rem;
+}
+
+.card-footer {
+  padding: 1rem; /* Add padding to the card footer */
+}
+
+.card-btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.btn {
+  font-size: 0.9rem;
+}
